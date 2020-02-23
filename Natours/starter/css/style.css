@@ -6,3 +6,183 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+/* Reset default browser CSS */
+html {
+  box-sizing: border-box; /* Borders and padding are not added to height/width of an element */
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Lato", sans-serif; /* Font related styles should go in body */
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7; /* 1.7* bigger than predefined line height */
+  color: #777;
+  padding: 30px;
+}
+
+.header {
+  height: 95vh; /* set element to 95 viewport height */
+  background-image: linear-gradient(
+    to right bottom, 
+    rgba(126, 213, 111, 0.808), 
+    rgba(40, 180, 133, 0.808)), 
+    url(../img/hero.jpg);
+  background-size: cover; /* makes the background image as large as possible to fill the entire background area */
+  background-position: top; /* sets the starting position of a background image */
+  position: relative; /* reference for logo-box position absolute starts to count */
+
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.logo-box {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+
+.logo {
+  height: 35px; /* specify height and width will scale */
+}
+
+.text-box {
+  position: absolute;
+  top: 40%;  /* shifts 40% in relation to the parent element */
+  left: 50%; /* shifts 50% in relation to the parent element */
+  transform: translate(-50%, -50%); /* not in relation to parent - shifts 50% of element itself */
+  text-align: center; /* in-line elements are treated as text so they can be centered with this */
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+
+  backface-visibility: hidden; /* Determines if the back part of element is visible or hidden */
+  margin-bottom: 60px; /* add space between button and heading */
+}
+
+.heading-primary-main {
+  display: block;
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 35px;
+  
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+
+.heading-primary-sub {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 17.4px;
+
+  animation: moveInRight 1s ease-out;
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  80% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  80% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block; /* gives padding/height etc. to this element while remaining inline */
+  border-radius: 100px;
+  transition: all .2s; /* apply rule to all transition properties*/
+  position: relative; /* gives reference to the :after psuedo button element absolute position */
+
+}
+
+.btn:hover {
+  transform: translateY(-3px); /* shift the button up on hover */
+  box-shadow: 0 10px 20px rgba(0,0,0,.2); /* increase blur on hover to show button raised up */
+}
+
+.btn:active {
+  transform: translateY(-1px); /* shift the button up slightly when clicked */
+  box-shadow: 0 5px 10px rgba(0,0,0,.2); /* decrease blur on click */
+}
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
+}
+
+/* pseudo element - that looks exactly like the button we have but put it behind it */
+.btn::after {
+  content: ""; /* must have content property in order to show up */
+  display: inline-block; /* resemble the btn so we use same display property */
+  height: 100%; /* since this treated as a child of the button (100% means it is 100% the width of the button ) */
+  width: 100%;
+  border-radius: 100px;
+  position: absolute; /* allows it to be behind/top the main button element  */
+  top: 0;
+  left: 0;
+  z-index: -1; /* moves is behind the main button element */
+  transition: all .4s;
+}
+
+.btn-white::after {
+  background-color: #fff;
+  color: #777;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.25) scaleY(1.5);
+  opacity: 0;
+}
+
+.btn-animated {
+  animation: moveInBottom .5s ease-out .75s;
+  animation-fill-mode: backwards; /* automatically apply styles from 0% animation */
+}
