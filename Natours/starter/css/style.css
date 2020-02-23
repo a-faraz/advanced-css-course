@@ -10,6 +10,7 @@ Dark green: #28b485
 /* Reset default browser CSS */
 html {
   box-sizing: border-box; /* Borders and padding are not added to height/width of an element */
+  font-size: 62.5%; /* root font size is 16px - or 100% - in order to get % for 10px we do (10/16 = 0.625) * 100 */
 }
 
 *, *::before, *::after {
@@ -21,10 +22,9 @@ html {
 body {
   font-family: "Lato", sans-serif; /* Font related styles should go in body */
   font-weight: 400;
-  font-size: 16px;
   line-height: 1.7; /* 1.7* bigger than predefined line height */
   color: #777;
-  padding: 30px;
+  padding: 3rem;
 }
 
 .header {
@@ -43,12 +43,12 @@ body {
 
 .logo-box {
   position: absolute;
-  top: 40px;
-  left: 40px;
+  top: 4rem;
+  left: 4rem;
 }
 
 .logo {
-  height: 35px; /* specify height and width will scale */
+  height: 3.5rem; /* specify height and width will scale */
 }
 
 .text-box {
@@ -64,14 +64,14 @@ body {
   text-transform: uppercase;
 
   backface-visibility: hidden; /* Determines if the back part of element is visible or hidden */
-  margin-bottom: 60px; /* add space between button and heading */
+  margin-bottom: 6rem; /* add space between button and heading */
 }
 
 .heading-primary-main {
   display: block;
-  font-size: 60px;
+  font-size: 6rem;
   font-weight: 400;
-  letter-spacing: 35px;
+  letter-spacing: 3.5rem;
   
   animation-name: moveInLeft;
   animation-duration: 1s;
@@ -80,9 +80,9 @@ body {
 
 .heading-primary-sub {
   display: block;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: 17.4px;
+  letter-spacing: 1.75rem;
 
   animation: moveInRight 1s ease-out;
 }
@@ -90,11 +90,11 @@ body {
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-100px);
+    transform: translateX(-10rem);
   }
 
   80% {
-    transform: translateX(10px);
+    transform: translateX(1rem);
   }
 
   100% {
@@ -106,11 +106,11 @@ body {
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(10rem);
   }
 
   80% {
-    transform: translateX(-10px);
+    transform: translateX(-1rem);
   }
 
   100% {
@@ -122,7 +122,7 @@ body {
 @keyframes moveInBottom {
   0% {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(3rem);
   }
 
   100% {
@@ -135,22 +135,22 @@ body {
 .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
-  padding: 15px 40px;
+  padding: 1.5rem 4rem;
   display: inline-block; /* gives padding/height etc. to this element while remaining inline */
-  border-radius: 100px;
+  border-radius: 10rem;
   transition: all .2s; /* apply rule to all transition properties*/
   position: relative; /* gives reference to the :after psuedo button element absolute position */
-
+  font-size: 1.6rem;
 }
 
 .btn:hover {
   transform: translateY(-3px); /* shift the button up on hover */
-  box-shadow: 0 10px 20px rgba(0,0,0,.2); /* increase blur on hover to show button raised up */
+  box-shadow: 0 1rem 2rem rgba(0,0,0,.2); /* increase blur on hover to show button raised up */
 }
 
 .btn:active {
   transform: translateY(-1px); /* shift the button up slightly when clicked */
-  box-shadow: 0 5px 10px rgba(0,0,0,.2); /* decrease blur on click */
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.2); /* decrease blur on click */
 }
 
 .btn-white {
@@ -164,7 +164,7 @@ body {
   display: inline-block; /* resemble the btn so we use same display property */
   height: 100%; /* since this treated as a child of the button (100% means it is 100% the width of the button ) */
   width: 100%;
-  border-radius: 100px;
+  border-radius: 10rem;
   position: absolute; /* allows it to be behind/top the main button element  */
   top: 0;
   left: 0;
